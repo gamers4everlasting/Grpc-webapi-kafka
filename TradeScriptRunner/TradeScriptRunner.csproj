@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="docker-compose.yml">
+        <DependentUpon>Dockerfile</DependentUpon>
+      </None>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\TradeScriptRunner.BLL\TradeScriptRunner.BLL.csproj" />
+      <ProjectReference Include="..\TradeScriptRunner.DAL\TradeScriptRunner.DAL.csproj" />
+    </ItemGroup>
+
+</Project>

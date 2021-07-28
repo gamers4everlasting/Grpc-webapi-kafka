@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+        <PackageReference Include="Google.Protobuf" Version="3.17.3" />
+        <PackageReference Include="Grpc.AspNetCore.Web" Version="2.38.0" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.38.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Confluent.Kafka" Version="1.7.0" />
+        <PackageReference Include="kafka-sharp" Version="1.4.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\TradeScriptRunner.DAL\TradeScriptRunner.DAL.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\GrpcService.Server\Protos\greet.proto" GrpcServices="Client">
+            <Link>Protos\greet.proto</Link>
+        </Protobuf>
+    </ItemGroup>
+</Project>
