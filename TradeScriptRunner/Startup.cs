@@ -40,6 +40,7 @@ namespace TradeScriptRunner
             });
             
             services.AddTransient<IAlertService, AlertService>();
+            services.AddScoped<IGrpcSenderService, GrpcSenderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

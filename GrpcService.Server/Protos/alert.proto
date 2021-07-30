@@ -1,21 +1,23 @@
 syntax = "proto3";
 
-option csharp_namespace = "GrpcService.Server";
+option csharp_namespace = "TradeScriptRunner.BLL";
 
-package greet;
+package alert;
 
 // The greeting service definition.
-service Greeter {
+service Alert {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc ExecuteAlert (AlertRequest) returns (AlertReply);
 }
 
 // The request message containing the user's name.
-message HelloRequest {
+message AlertRequest {
   string name = 1;
+  string symbol = 2;
+  string script = 3;
 }
 
 // The response message containing the greetings.
-message HelloReply {
+message AlertReply {
   string message = 1;
 }

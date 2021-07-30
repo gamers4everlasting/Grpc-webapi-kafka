@@ -1,13 +1,12 @@
 ﻿version: '3.4'
 
-services: 
-  
+services:   
   postgresql_database:
     image: postgres:latest
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1
-      - POSTGRES_DB=SIMPLE
+      - POSTGRES_DB=TradeScriptRunnerDb
     ports:
       - "5432:5432"
     restart: unless-stopped

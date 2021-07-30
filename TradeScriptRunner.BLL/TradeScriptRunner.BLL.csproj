@@ -21,8 +21,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="..\GrpcService.Server\Protos\greet.proto" GrpcServices="Client">
-            <Link>Protos\greet.proto</Link>
+        <Protobuf Include="..\GrpcService.Server\Protos\alert.proto" GrpcServices="Client">
+            <Link>Protos\alert.proto</Link>
         </Protobuf>
     </ItemGroup>
 </Project>

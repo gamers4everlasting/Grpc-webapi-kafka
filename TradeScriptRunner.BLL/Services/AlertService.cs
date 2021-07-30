@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using TradeScriptRunner.BLL.Interfaces;
 using TradeScriptRunner.Common.Results;
 using TradeScriptRunner.DAL;
-using TradeScriptRunner.DAL.Entities;
 
 namespace TradeScriptRunner.BLL.Services
 {
@@ -17,12 +16,12 @@ namespace TradeScriptRunner.BLL.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Alert>> GetAlerts()
+        public async Task<IEnumerable<TradeScriptRunner.DAL.Entities.Alert>> GetAlerts()
         {
             return await _context.Alerts.ToListAsync();
         }
         
-        public async Task<ExecuteResult> CreateAlert(Alert value)
+        public async Task<ExecuteResult> CreateAlert(TradeScriptRunner.DAL.Entities.Alert value)
         {
             return await ExecuteAsync(async () =>
             {
@@ -34,7 +33,7 @@ namespace TradeScriptRunner.BLL.Services
                         State = ExecuteState.Error
                     };
 
-                _context.Alerts.Add(new Alert {Name = value.Name, Script = value.Script});
+                _context.Alerts.Add(new TradeScriptRunner.DAL.Entities.Alert {Name = value.Name, Script = value.Script});
                 await _context.SaveChangesAsync();
 
                 return ExecuteResult.Success();

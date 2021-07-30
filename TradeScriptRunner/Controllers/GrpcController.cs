@@ -1,33 +1,28 @@
 ﻿using System.Threading.Tasks;
-using GrpcService.Server;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using TradeScriptRunner.BLL.Helpers;
+using TradeScriptRunner.BLL;
+using TradeScriptRunner.BLL.Interfaces;
 
 namespace TradeScriptRunner.Controllers
 {
     public class GrpcController : BaseApiController
     {
         private readonly ILogger<GrpcController> _logger;
-        private readonly IConfiguration _config;
-        private readonly Greeter.GreeterClient _greeterClient;
+        private readonly IGrpcSenderService _grpcSenderService;
 
-        public GrpcController(IConfiguration config, ILogger<GrpcController> logger)
+        public GrpcController(ILogger<GrpcController> logger, IGrpcSenderService grpcSenderService)
         {
-            _config = config;
             _logger = logger;
-            _greeterClient = GrpcHelper.GetOrCreateGreeterClient(_config["RPCService:ServiceUrl"]);
+            _grpcSenderService = grpcSenderService;
         }
 
         [HttpPost]
-        public  ActionResult<HelloReply> RunScript([FromQuery] string name)
+        public async Task<ActionResult<AlertReply>> RunScript([FromQuery] string name, string symbol, string script) //TODO: move to a model.
         {
             _logger.LogInformation("Request received for Run script");
-            var result = _greeterClient.SayHello(new HelloRequest
-            {
-                Name = name
-            });
+
+            var result = await _grpcSenderService.SendRequestAsync(name, symbol, script);
 
             return Ok(result.Message);
         }

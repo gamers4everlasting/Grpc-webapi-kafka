@@ -27,7 +27,7 @@ namespace GrpcService.Server
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<AlertService>();
             });
         }
     }

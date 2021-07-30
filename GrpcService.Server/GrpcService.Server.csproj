@@ -4,13 +4,21 @@
         <TargetFramework>net5.0</TargetFramework>
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     </PropertyGroup>
-
     <ItemGroup>
-        <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+        <Protobuf Include="Protos\alert.proto" GrpcServices="Server" />
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Tradescript, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>E:\Avidi\TradeProject\src\Tradescript.Core\obj\Release\netstandard2.1\Tradescript.dll</HintPath>
+      </Reference>
+      <Reference Include="TradeScript.Common, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>E:\Avidi\TradeProject\src\TradeScript.Common\bin\Release\netstandard2.1\TradeScript.Common.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

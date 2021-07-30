@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,9 +18,9 @@ namespace TradeScriptRunner.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Alert>))]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_alertService.GetAlerts());
+            return Ok(await _alertService.GetAlerts());
         }
         
         [HttpPost]

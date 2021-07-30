@@ -76,7 +76,7 @@ namespace KafkaTest
         {
             for (int v = 0; v < 100; v++)
             {
-                var value = $"Sending: Hello World {v}";
+                var value = $"Sent: Hello World {v}";
                 _logger.LogInformation(value);
                 await _producer.ProduceAsync("demo", new Message<Null, string>()
                 {
